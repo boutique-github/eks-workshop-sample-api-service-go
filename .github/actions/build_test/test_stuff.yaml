@@ -1,0 +1,22 @@
+name: Build and Test Python Package
+description: Build the versioned python package
+
+outputs:
+  package_built:
+    description: "Whether the package was built"
+    value: true
+
+runs:
+  using: composite
+  steps:
+
+  - name: Set up Python
+    uses: actions/setup-python@v2
+    with:
+      python-version: 3.8
+
+  - name: Install Poetry
+    shell: bash
+    run: |-
+      python -m pip install --upgrade pip
+      python -m pip install poetry==1.7.0
